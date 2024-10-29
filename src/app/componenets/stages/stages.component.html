@@ -1,0 +1,40 @@
+<div class="p-4 md:p-8">
+  <h1 class="text-2xl font-bold text-center mb-6">Production Stages</h1>
+
+  <div class="new-item flex justify-center mb-6">
+    <input
+      [(ngModel)]="newItem"
+      placeholder="Add New Item"
+      (keyup.enter)="addItem()"
+      class="w-full max-w-lg px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+    />
+    <button
+      (click)="addItem()"
+      class="ml-2 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
+    >
+      Add
+    </button>
+  </div>
+
+  <div class="stages grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+    <div
+      class="stage w-full border border-gray-300 rounded-lg bg-gray-50 shadow-md px-2 py-3"
+      *ngFor="let stage of stages"
+    >
+      <h3 class="text-lg font-semibold text-center text-gray-700 mb-4">
+        {{ stage.name }}
+      </h3>
+      <div class="items space-y-2">
+        <div
+          class="item bg-white p-3 border rounded-md hover:bg-blue-50 transition-colors cursor-pointer"
+          *ngFor="let item of stage.items"
+          (click)="handleClick(stage, item)"
+        >
+          <ul class="list-none">
+            <li class="text-gray-800 font-medium">{{ item }}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
